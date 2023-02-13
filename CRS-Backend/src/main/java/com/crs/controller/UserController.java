@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
-
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,6 +61,30 @@ public class UserController {
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createUser.getUserId()).toUri();
 			return ResponseEntity.created(location).build();
 		}
+	}
+
+	//create admin
+	@PostConstruct
+	public void createAdmin() {
+		User admin = new User();
+		admin.setUsername("crs-admin@abc.com");
+		admin.setPassword("admin@crs");
+		admin.setFirstName("Twarit");
+		admin.setLastName("Soni");
+		admin.setEmail("twarit.soni@gmail.com");
+		admin.setPinCode(110001);
+		admin.setPhone("+916265458854");
+		admin.setRoleName("ADMIN");
+		Role role = new Role();
+		role.setRoleId(101);
+		role.setRoleName(admin.getRoleName());
+		Set<UserRole> userRole = new HashSet<>();
+		UserRole uR = new UserRole();
+		uR.setUser(admin);
+		uR.setRole(role);
+		userRole.add(uR);
+		User userAdmin = this.userService.createUser(admin, userRole);
+		System.out.println("Admin Username: "+userAdmin.getUsername());
 	}
 	
 	//get user by username
