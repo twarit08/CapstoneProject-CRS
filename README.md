@@ -22,3 +22,7 @@ Download or clone the content of repository. Then follow the instruction given b
 3. Select the dump file to import and click start import.
 
 The web application is now ready to use in http://localhost:4200/
+
+Admin Details:
+Username: crs-admin@abc.com
+Password: admin123
