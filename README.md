@@ -25,4 +25,4 @@ The web application is now ready to use in http://localhost:4200/
 
 Admin Details:
 Username: crs-admin@abc.com
-Password: admin123
+Password: admin@crs
